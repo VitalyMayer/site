@@ -1,8 +1,8 @@
 
 <nav>
     <div class="topnav">
-        <a class="active" href="#main">Main</a>
-        <a href="#contact">Contact</a>
-        <a href="#about">About</a>
+        <a class="active" href="#">Main</a>
+        <a href="#">Contact</a>
+        <a href="#">About</a>
     </div>
 </nav>

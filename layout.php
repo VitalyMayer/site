@@ -4,10 +4,13 @@ require_once(ROOT . '/navigation.php');
 ?>
 
 <main>
-    <article>
-        <h2>Post 1</h2>
-        <p></p>
-    </article>
+    <?php foreach ($posts as $heading => $post): ?>
+        <article>
+            <h2><?php echo $heading; ?></h2>
+            <p><?php echo $post; ?></p>
+            <hr>
+        </article>
+    <?php endforeach; ?>
 </main>
 
 <?php require_once(ROOT . '/footer.php'); ?>
