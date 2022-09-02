@@ -1,1 +1,3 @@
 Task 3: template pages
+
+Task 4: breaking the layout into components
