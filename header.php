@@ -10,16 +10,3 @@
         <h1>Site</h1>
         <p>Test website</p>
     </header>
-	
-    <main>
-	<article>
-            <h2>Post 1</h2>
-            <p></p>
-            <span class="author"></span>
-	</article>
-    </main>
-
-      <footer class="footer">
-    </footer>
-  </body>
-</html>
