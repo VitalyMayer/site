@@ -2,37 +2,64 @@
 
 class Post implements Model {
 
-    public static function getPostsList() {
-        $db = Db::getConnection();
+    private $id;
+    private $title;
+    private $content;
 
-        $postsList = array();
-
-        $result = $db->query('SELECT id, title, content FROM posts ');
-
-        $i = 0;
-
-        while ($row = $result->fetch()) {
-            $postsList[$i]['id'] = $row['id'];
-            $postsList[$i]['title'] = $row['title'];
-            $postsList[$i]['content'] = $row['content'];
-            $i++;
-        }
-
-        return $postsList;
+    public function setID($aID) {
+        $this->id = $aID;
     }
 
-    public static function getPostItemById($id) {
-        $id = intval($id);
+    public function getID() {
+        return $this->id;
+    }
+
+    public function setTitle($aTitle) {
+        $this->title = $aTitle;
+    }
+
+    public function getTitle() {
+        return $this->title;
+    }
+
+    public function setContent($aContent) {
+        $this->content = $aContent;
+    }
+
+    public function getContent() {
+        return $this->content;
+    }
+
+    public function Read() {
+        $id = $this->getID();
 
         if ($id) {
             $db = Db::getConnection();
 
             $result = $db->query('SELECT * FROM posts WHERE id=' . $id);
 
-            $post = $result->fetch();
+            $post = $result->fetch(PDO::FETCH_OBJ);
 
-            return $post;
+            $this->setTitle($post->title);
+            $this->setContent($post->content);
         }
+    }
+
+    public static function getArrayID() {
+        $db = Db::getConnection();
+
+        $arrayID = array();
+
+        $result = $db->query('SELECT id FROM posts ');
+
+        $i = 0;
+
+        while ($row = $result->fetch()) {
+            $arrayID[$i] = $row['id'];
+            $i++;
+        }
+
+        return $arrayID;
     }
 
 }

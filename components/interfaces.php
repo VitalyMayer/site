@@ -7,8 +7,7 @@ interface Router_interface
 
 interface Model
 {
-    public static function getPostItemById($id);
-    public static function getPostsList();
+    public function Read();
 }
 
 interface Controller
