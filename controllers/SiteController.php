@@ -47,5 +47,27 @@ class SiteController implements Controller {
         require_once(ROOT . '/views/create.php');
         
         return true;
-    }    
+    }
+
+    // Update a post
+    public function actionUpdate($id) {
+        $post = new Post;
+        $post->setID($id);
+        $post->Read();
+
+        if (isset($_POST['submit'])) {
+            $title = $_POST['title'];
+            $content = $_POST['content'];
+            
+            $post = new Post;
+            $post->setID($id);
+            $post->setTitle($title);
+            $post->setContent($content);
+            $post->Update();
+        }
+        
+        require_once(ROOT . '/views/update.php');
+        
+        return true;
+    } 
 }

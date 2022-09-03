@@ -7,6 +7,7 @@ require_once(ROOT . '/views/navigation.php');
         <article>
             <h2><?php echo $post->getTitle(); ?></h2>
             <p><?php  echo $post->getContent(); ?></p>
+            <a href="/update/<?php  echo $post->getID(); ?>">Update</a><br><br>            
             <hr>
         </article>
 </main>

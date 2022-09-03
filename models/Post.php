@@ -60,6 +60,26 @@ class Post implements Model {
         
         return $result->execute();
     }
+
+    public function Update() {
+        $id = $this->getID();
+        $title = $this->getTitle();
+        $content = $this->getContent();
+
+        $db = Db::getConnection();
+        
+        $sql = "UPDATE posts 
+            SET title = :title, content = :content
+            WHERE id = :id";
+        
+        
+        $result = $db->prepare($sql);
+        $result->bindParam(':id', $id, PDO::PARAM_INT);
+        $result->bindParam(':title', $title, PDO::PARAM_STR);
+        $result->bindParam(':content', $content, PDO::PARAM_STR);
+        
+        return $result->execute();   
+    }
     
     public static function getArrayID() {
         $db = Db::getConnection();
