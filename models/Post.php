@@ -45,6 +45,22 @@ class Post implements Model {
         }
     }
 
+    public function Create() {
+        $title = $this->getTitle();
+        $content = $this->getContent();
+
+        $db = Db::getConnection();
+
+        $sql = 'INSERT INTO posts (title, content) '
+                . 'VALUES (:title, :content)';
+        
+        $result = $db->prepare($sql);        
+        $result->bindParam(':title', $title, PDO::PARAM_STR);
+        $result->bindParam(':content', $content, PDO::PARAM_STR);
+        
+        return $result->execute();
+    }
+    
     public static function getArrayID() {
         $db = Db::getConnection();
 

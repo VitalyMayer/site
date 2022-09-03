@@ -29,4 +29,23 @@ class SiteController implements Controller {
         return true;
     }
 
+    // Create a post
+    public function actionCreate() {
+        $title = '';
+        $content = '';
+
+        if (isset($_POST['submit'])) {
+            $title = $_POST['title'];
+            $content = $_POST['content'];
+
+            $post = new Post();
+            $post->setTitle($title);
+            $post->setContent($content);
+            $post->Create();
+        }
+
+        require_once(ROOT . '/views/create.php');
+        
+        return true;
+    }    
 }
