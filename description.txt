@@ -5,3 +5,5 @@ Task 4: breaking the layout into components
 Task 5: add post list
 
 Task 6: MVC framework creation
+
+Task 7: database addition
