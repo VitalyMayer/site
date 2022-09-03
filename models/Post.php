@@ -80,7 +80,20 @@ class Post implements Model {
         
         return $result->execute();   
     }
-    
+
+    public function Delete() {
+        $id = $this->getID();
+        $id = intval($id);
+
+        $db = Db::getConnection();     
+        
+        $sql = 'DELETE FROM posts WHERE id = :id';
+        
+        $result = $db->prepare($sql);
+        $result->bindParam(':id', $id, PDO::PARAM_INT);
+        return $result->execute();
+    }
+
     public static function getArrayID() {
         $db = Db::getConnection();
 

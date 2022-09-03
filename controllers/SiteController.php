@@ -69,5 +69,16 @@ class SiteController implements Controller {
         require_once(ROOT . '/views/update.php');
         
         return true;
-    } 
+    }
+
+    // Delete a post
+    public function actionDelete($id) {
+        $post = new Post;
+        $post->setID($id);
+        $post->Delete();
+
+        header("Location: /");
+        return true;
+    }
+
 }

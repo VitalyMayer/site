@@ -7,9 +7,10 @@ interface Router_interface
 
 interface Model
 {
-    public function Create();    
+    public function Create();
     public function Read();
     public function Update();
+    public function Delete();
 }
 
 interface Controller
