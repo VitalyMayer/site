@@ -1,5 +1,5 @@
 <?php
-require_once(ROOT . '/views/header.php');
+require_once(ROOT . '/views/layouts/header.php');
 require_once(ROOT . '/views/navigation.php');
 ?>
 
@@ -13,4 +13,4 @@ require_once(ROOT . '/views/navigation.php');
         </article>
 </main>
 
-<?php require_once(ROOT . '/views/footer.php'); ?>
+<?php require_once(ROOT . '/views/layouts/footer.php'); ?>

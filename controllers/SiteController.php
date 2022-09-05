@@ -34,6 +34,8 @@ class SiteController implements Controller {
         $title = '';
         $content = '';
 
+        require_once(ROOT . '/views/create.php');
+
         if (isset($_POST['submit'])) {
             $title = $_POST['title'];
             $content = $_POST['content'];
@@ -44,8 +46,6 @@ class SiteController implements Controller {
             $post->Create();
         }
 
-        require_once(ROOT . '/views/create.php');
-        
         return true;
     }
 

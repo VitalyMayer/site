@@ -58,7 +58,7 @@ class Post implements Model {
         $result->bindParam(':title', $title, PDO::PARAM_STR);
         $result->bindParam(':content', $content, PDO::PARAM_STR);
         
-        return $result->execute();
+        $result->execute();
     }
 
     public function Update() {
@@ -78,7 +78,7 @@ class Post implements Model {
         $result->bindParam(':title', $title, PDO::PARAM_STR);
         $result->bindParam(':content', $content, PDO::PARAM_STR);
         
-        return $result->execute();   
+        $result->execute();   
     }
 
     public function Delete() {
@@ -91,7 +91,7 @@ class Post implements Model {
         
         $result = $db->prepare($sql);
         $result->bindParam(':id', $id, PDO::PARAM_INT);
-        return $result->execute();
+        $result->execute();
     }
 
     public static function getArrayID() {

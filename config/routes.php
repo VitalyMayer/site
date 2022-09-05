@@ -5,7 +5,8 @@ return array(
     'update/([0-9]+)' => 'site/update/$1',
     'delete/([0-9]+)' => 'site/delete/$1',
     'create' => 'site/create',
+
+    'user/register' => 'user/register',
     
-    'index.php' => 'site/index', 
     '' => 'site/index',
 );
