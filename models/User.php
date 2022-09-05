@@ -6,6 +6,7 @@ class User {
     private $name;
     private $email;
     private $password;
+    private $image;
 
     public function setID($aID) {
         $this->id = $aID;
@@ -39,20 +40,30 @@ class User {
         return $this->password;
     }
 
+    public function setImage($aImage) {
+        $this->image = $aImage;
+    }
+
+    public function getImage() {
+        return $this->image;
+    }
+
     public function Register() {
         $name = $this->getName();
         $email = $this->getEmail();
         $password = $this->getPassword();
+        $image = $this->getImage();
 
         $db = Db::getConnection();
 
-        $sql = 'INSERT INTO user (name, email, password) '
-                . 'VALUES (:name, :email, :password)';
+        $sql = 'INSERT INTO user (name, email, password, image) '
+                . 'VALUES (:name, :email, :password, :image)';
 
         $result = $db->prepare($sql);
         $result->bindParam(':name', $name, PDO::PARAM_STR);
         $result->bindParam(':email', $email, PDO::PARAM_STR);
         $result->bindParam(':password', $password, PDO::PARAM_STR);
+        $result->bindParam(':image', $image, PDO::PARAM_STR);
 
         return $result->execute();
     }
@@ -107,6 +118,27 @@ class User {
         return false;
     }
 
+    public function Edit() {
+        $id = $this->getID();
+        $name = $this->getName();
+        $password = $this->getPassword();
+        $image = $this->getImage();
+
+        $db = Db::getConnection();
+
+        $sql = "UPDATE user 
+            SET name = :name, password = :password, image = :image
+            WHERE id = :id";
+
+        $result = $db->prepare($sql);
+        $result->bindParam(':id', $id, PDO::PARAM_INT);
+        $result->bindParam(':name', $name, PDO::PARAM_STR);
+        $result->bindParam(':password', $password, PDO::PARAM_STR);
+        $result->bindParam(':image', $image, PDO::PARAM_STR);
+
+        return $result->execute();
+    }
+
     public function getUserById() {
         $id = $this->getID();
 
@@ -120,6 +152,7 @@ class User {
             $this->setName($user->name);
             $this->setEmail($user->email);
             $this->setPassword($user->password);
+            $this->setImage($user->image);
         }
     }
 
