@@ -56,7 +56,7 @@ class User {
 
         return $result->execute();
     }
-    
+
     public function checkUserData() {
         $email = $this->getEmail();
         $password = $this->getPassword();
@@ -90,7 +90,7 @@ class User {
         }
         return true;
     }
-    
+
     public function checkEmailExists() {
         $email = $this->getEmail();
 
@@ -105,6 +105,22 @@ class User {
         if ($result->fetchColumn())
             return true;
         return false;
+    }
+
+    public function getUserById() {
+        $id = $this->getID();
+
+        if ($id) {
+            $db = Db::getConnection();
+
+            $result = $db->query('SELECT * FROM user WHERE id=' . $id);
+
+            $user = $result->fetch(PDO::FETCH_OBJ);
+
+            $this->setName($user->name);
+            $this->setEmail($user->email);
+            $this->setPassword($user->password);
+        }
     }
 
 }

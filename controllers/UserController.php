@@ -34,7 +34,7 @@ class UserController {
 
         return true;
     }
-    
+
     public function actionLogin() {
         $email = '';
         $password = '';
@@ -69,4 +69,21 @@ class UserController {
         unset($_SESSION["user"]);
         header("Location: /");
     }
+
+    public function actionEdit() {
+        if (!$_SESSION['user']) {
+            header("Location: /user/login");
+        }
+
+        $user = new User();
+        $user->setID($_SESSION['user']);
+        $user->getUserById();
+
+        $result = false;
+
+        require_once(ROOT . '/views/user/edit.php');
+
+        return true;
+    }
+
 }

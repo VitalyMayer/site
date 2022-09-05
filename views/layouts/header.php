@@ -12,8 +12,8 @@
             <p>Test website</p>
             <?php if (User::isGuest()): ?>
                 <a href="/user/login/">Login</a>
-            <?php  else: ?>
+            <?php else: ?>
                 <?php echo $_SESSION['name']; ?>
                 <a href="/user/logout/">Logout</a>
-            <?php endif; ?>              
+            <?php endif; ?>    
         </header>
