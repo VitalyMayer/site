@@ -5,7 +5,11 @@ return array(
     'update/([0-9]+)' => 'site/update/$1',
     'delete/([0-9]+)' => 'site/delete/$1',
     'create' => 'site/create',
+
+    'user/register' => 'user/register',
+    'user/login' => 'user/login',
+    'user/logout' => 'user/logout',
+    'user/edit' => 'user/edit',
     
-    'index.php' => 'site/index', 
     '' => 'site/index',
 );
