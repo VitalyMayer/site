@@ -11,3 +11,5 @@ Task 7: database addition
 Task 8: add Active Record
 
 Task 9: registration and authentication
+
+Task 10: profile
