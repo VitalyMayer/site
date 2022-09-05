@@ -12,10 +12,14 @@
 
                 <div class="signup-from"><!--sign up form-->
                     <h2>Registration on the site</h2>
-                    <form action="" method="post">
+                    <form action="#" method="post" enctype="multipart/form-data">
                         <input type="text" name="name" placeholder="Name" value="<?php echo $name; ?>"/><br/><br/>
                         <input type="email" name="email" placeholder="E-mail" value="<?php echo $email; ?>"/><br/><br/>
                         <input type="password" name="password" placeholder="Password" value="<?php echo $password; ?>"/><br/><br/>
+                        <label for="picture"><b>Picture</b></label>
+                        <br><br>
+                        <input type="file" name="image">
+                        <br><br>
                         <input type="submit" name="submit" class="btn button" value="Registration" />
                     </form>
                 </div>
