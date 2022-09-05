@@ -7,6 +7,8 @@ return array(
     'create' => 'site/create',
 
     'user/register' => 'user/register',
+    'user/login' => 'user/login',
+    'user/logout' => 'user/logout',
     
     '' => 'site/index',
 );

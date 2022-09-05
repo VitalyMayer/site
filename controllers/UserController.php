@@ -34,5 +34,39 @@ class UserController {
 
         return true;
     }
+    
+    public function actionLogin() {
+        $email = '';
+        $password = '';
 
+        if (isset($_POST['submit'])) {
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+
+            $errors = false;
+
+            $user = new User;
+            $user->setEmail($email);
+            $user->setPassword($password);
+
+            $user->checkUserData();
+
+            if ($user->getID() == false) {
+                $errors[] = 'Incorrect login details';
+            } else {
+                $user->auth();
+
+                header("Location: /");
+            }
+        }
+
+        require_once(ROOT . '/views/user/login.php');
+
+        return true;
+    }
+
+    public function actionLogout() {
+        unset($_SESSION["user"]);
+        header("Location: /");
+    }
 }

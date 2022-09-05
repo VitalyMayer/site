@@ -56,7 +56,41 @@ class User {
 
         return $result->execute();
     }
+    
+    public function checkUserData() {
+        $email = $this->getEmail();
+        $password = $this->getPassword();
 
+        $db = Db::getConnection();
+
+        $sql = 'SELECT * FROM user WHERE email = :email AND password = :password';
+
+        $result = $db->prepare($sql);
+        $result->bindParam(':email', $email, PDO::PARAM_STR);
+        $result->bindParam(':password', $password, PDO::PARAM_STR);
+        $result->execute();
+
+        $user = $result->fetch();
+        if ($user) {
+            $this->setID($user['id']);
+            $this->setName($user['name']);
+        }
+
+        return false;
+    }
+
+    public function auth() {
+        $_SESSION['user'] = $this->getID();
+        $_SESSION['name'] = $this->getName();
+    }
+
+    public static function isGuest() {
+        if (isset($_SESSION['user'])) {
+            return false;
+        }
+        return true;
+    }
+    
     public function checkEmailExists() {
         $email = $this->getEmail();
 
